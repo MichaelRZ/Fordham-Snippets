@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Quicksort &mdash; Fordham Snippets  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Fordham Snippets  documentation" href="../../index.html"/>
+        <link rel="up" title="Sorting" href="index.html"/>
+        <link rel="next" title="Math" href="../math/index.html"/>
+        <link rel="prev" title="Bubble Sort" href="bubbleSort.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Fordham Snippets
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tasks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../beginner/index.html">Beginner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/Hello World.html">Hello World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sorting</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="bubbleSort.html">Bubble Sort</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quicksort</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../math/index.html">Math</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../math/expsqr.html">Exponentiation by Squaring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Fordham Snippets</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tasks</a> &raquo;</li>
+        
+          <li><a href="index.html">Sorting</a> &raquo;</li>
+        
+      <li>Quicksort</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="quicksort">
+<h1>Quicksort<a class="headerlink" href="#quicksort" title="Permalink to this headline">¶</a></h1>
+<p>Quicksort is a sorting algorithm you should probably memorize. Besides being only 10 - 15 lines,
+quicksort is typically the fastest sort by itself, in an average case. It doesn’t do so well with
+reversing an array, and that is the worst case (which is why we have hybrid sorts, but that’s going to be
+a later section).</p>
+<p>So it’s short and fast. Basically, if you had a hand of cards, you would pick a card (the “pivot”), and
+seperate the rest of the cards into cards with values less than that and cards valued greater than that.
+Then you pick a “pivot” in those groups of cards and repeat, until everything is sorted.</p>
+<p>As you can imagine, you eventually get to a group with just one value, and you just return that value
+(this would be called the “base case” here, because it stops the “recursion”, but I’ll stop using long words now).</p>
+<p>It can be hard to understand, so <a class="reference external" href="https://www.youtube.com/watch?v=ywWBy6J5gz8">here’s some Hungarian people dancing through it.</a></p>
+<p>This example uses the first value as the “pivot”, because it’s easier to understand, but there are versions with a
+middle-pivot, mean pivot, or even two pivots.</p>
+<p>This example is also “stable”, meaning equal values have the same relative order after sorting. See <a class="reference external" href="https://www.geeksforgeeks.org/stability-in-sorting-algorithms/">this page</a>
+for an explanation of that.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQgQWx0Lg== docutils container">
+<div class="docutils container">
+<p>Swift Alt.</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">array</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">left</span><span class="p">;</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">right</span><span class="p">;</span>
+    <span class="kt">int</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span> <span class="o">?</span> <span class="n">left</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">:</span> <span class="n">right</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+    <span class="n">left</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">pivot</span><span class="p">);</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">right</span><span class="p">);</span>
+    <span class="n">left</span><span class="p">.</span><span class="n">insert</span><span class="p">(</span><span class="n">left</span><span class="p">.</span><span class="n">end</span><span class="p">(),</span> <span class="n">right</span><span class="p">.</span><span class="n">begin</span><span class="p">(),</span> <span class="n">right</span><span class="p">.</span><span class="n">end</span><span class="p">());</span>
+    <span class="k">return</span> <span class="n">left</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+    <span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vect</span><span class="p">{</span><span class="mi">54</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">1531</span><span class="p">,</span> <span class="mi">32</span><span class="p">};</span>  <span class="c1">//c++ 11</span>
+    <span class="n">vect</span> <span class="o">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">vect</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vect</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vect</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">Program</span>
+ <span class="p">{</span>
+    <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">array</span><span class="p">.</span><span class="n">Count</span> <span class="p">&lt;=</span> <span class="m">1</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">array</span><span class="p">;</span>
+        <span class="kt">var</span> <span class="n">left</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+        <span class="kt">var</span> <span class="n">right</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;();</span>
+        <span class="kt">var</span> <span class="n">pivot</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="m">0</span><span class="p">];</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">1</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">Count</span><span class="p">;</span> <span class="n">i</span><span class="p">++){</span>
+            <span class="k">if</span> <span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">&lt;</span> <span class="n">pivot</span><span class="p">)</span>
+                <span class="n">left</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+            <span class="k">else</span>
+                <span class="n">right</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+        <span class="p">}</span>
+        <span class="n">left</span> <span class="p">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">left</span><span class="p">);</span>
+        <span class="n">left</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="n">pivot</span><span class="p">);</span>
+        <span class="n">left</span><span class="p">.</span><span class="n">AddRange</span><span class="p">(</span><span class="n">quickSort</span><span class="p">(</span><span class="n">right</span><span class="p">));</span>
+        <span class="k">return</span> <span class="n">left</span><span class="p">;</span>
+    <span class="p">}</span>
+     <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span><span class="m">54</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">134</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">1531</span><span class="p">,</span> <span class="m">32</span><span class="p">};</span>
+         <span class="n">list</span> <span class="p">=</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+         <span class="n">list</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">quickSorting</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="nf">quickSort</span><span class="o">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span><span class="o">){</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">numbers</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">numbers</span><span class="o">;</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">left</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">right</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;();</span>
+        <span class="n">Integer</span> <span class="n">pivot</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="mi">0</span><span class="o">);</span>
+        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">numbers</span><span class="o">.</span><span class="na">size</span><span class="o">();</span> <span class="n">i</span><span class="o">++){</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">numbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">)</span> <span class="o">&lt;</span> <span class="n">pivot</span><span class="o">)</span>
+                <span class="n">left</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">numbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+            <span class="k">else</span>
+                <span class="n">right</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">numbers</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">i</span><span class="o">));</span>
+        <span class="o">}</span>
+        <span class="n">left</span> <span class="o">=</span> <span class="n">quickSort</span><span class="o">(</span><span class="n">left</span><span class="o">);</span>
+        <span class="n">left</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">pivot</span><span class="o">);</span>
+        <span class="n">left</span><span class="o">.</span><span class="na">addAll</span><span class="o">(</span><span class="n">quickSort</span><span class="o">(</span><span class="n">right</span><span class="o">));</span>
+        <span class="k">return</span> <span class="n">left</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">List</span><span class="o">&lt;</span><span class="n">Integer</span><span class="o">&gt;</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;&gt;(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">asList</span><span class="o">(</span><span class="mi">54</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">134</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">98</span><span class="o">,</span> <span class="mi">1531</span><span class="o">,</span> <span class="mi">32</span><span class="o">));</span>
+        <span class="n">numbers</span> <span class="o">=</span> <span class="n">quickSort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">array</span><span class="p">.</span><span class="nx">length</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">)</span>
+      <span class="k">return</span> <span class="nx">array</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">pivot</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="mi">0</span><span class="p">];</span>
+    <span class="kd">var</span> <span class="nx">left</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="kd">var</span> <span class="nx">right</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="nx">pivot</span> <span class="o">?</span> <span class="nx">left</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">])</span> <span class="o">:</span> <span class="nx">right</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]);</span>
+    <span class="k">return</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nx">left</span><span class="p">).</span><span class="nx">concat</span><span class="p">(</span><span class="nx">pivot</span><span class="p">,</span> <span class="nx">quickSort</span><span class="p">(</span><span class="nx">right</span><span class="p">));</span>
+  <span class="p">}</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">quickSort</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5643</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">19232</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1311</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">quickSort</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">arr</span>
+    <span class="n">left</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">right</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">pivot</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+        <span class="n">left</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">num</span><span class="p">])</span> <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">num</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span> <span class="k">else</span> <span class="n">right</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">num</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">quickSort</span><span class="p">(</span><span class="n">left</span><span class="p">)</span><span class="o">+</span><span class="p">[</span><span class="n">pivot</span><span class="p">]</span><span class="o">+</span><span class="n">quickSort</span><span class="p">(</span><span class="n">right</span><span class="p">)</span>
+
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Michael&quot;</span><span class="p">,</span> <span class="s2">&quot;Luke&quot;</span><span class="p">,</span> <span class="s2">&quot;Billy&quot;</span><span class="p">,</span> <span class="s2">&quot;Tom&quot;</span><span class="p">,</span> <span class="s2">&quot;McShane&quot;</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">quickSort</span><span class="p">(</span><span class="n">names</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">quicksort</span><span class="p">&lt;</span><span class="n">type</span><span class="p">:</span> <span class="nb">Comparable</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="n">type</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">guard</span> <span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">{</span><span class="k">return</span> <span class="n">array</span><span class="p">}</span>
+  <span class="kd">let</span> <span class="nv">pivot</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="kd">var</span> <span class="nv">less</span><span class="p">:</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+  <span class="kd">var</span> <span class="nv">more</span><span class="p">:</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span>
+  <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mf">1.</span><span class="p">.&lt;</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span><span class="p">{</span>
+    <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pivot</span> <span class="p">?</span> <span class="n">less</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="p">:</span> <span class="n">more</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="n">pivot</span><span class="p">]</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">more</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">arr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">8.8</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">quicksort</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQgQWx0Lg== docutils container">
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">quicksort</span><span class="p">&lt;</span><span class="n">type</span><span class="p">:</span> <span class="nb">Comparable</span><span class="p">&gt;(</span><span class="kc">_</span> <span class="n">array</span><span class="p">:</span> <span class="p">[</span><span class="n">type</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="n">type</span><span class="p">]</span> <span class="p">{</span>
+  <span class="k">guard</span> <span class="n">array</span><span class="p">.</span><span class="bp">count</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="k">else</span> <span class="p">{</span><span class="k">return</span> <span class="n">array</span><span class="p">}</span>
+
+  <span class="kd">let</span> <span class="nv">pivot</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+  <span class="kd">let</span> <span class="nv">less</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&lt;</span> <span class="n">pivot</span> <span class="p">}</span>
+  <span class="kd">let</span> <span class="nv">equal</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="p">==</span> <span class="n">pivot</span> <span class="p">}</span>
+  <span class="kd">let</span> <span class="nv">greater</span> <span class="p">=</span> <span class="n">array</span><span class="p">.</span><span class="bp">filter</span> <span class="p">{</span> <span class="nv">$0</span> <span class="o">&gt;</span> <span class="n">pivot</span> <span class="p">}</span>
+
+  <span class="k">return</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">less</span><span class="p">)</span> <span class="o">+</span> <span class="bp">equal</span> <span class="o">+</span> <span class="n">quicksort</span><span class="p">(</span><span class="n">greater</span><span class="p">)</span>
+<span class="p">}</span>
+
+<span class="kd">var</span> <span class="nv">arr</span> <span class="p">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mf">8.8</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">66</span><span class="p">]</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">quicksort</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQgQWx0Lg== docutils container">
+<div class="docutils container">
+<p>Swift Alt.</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You&#39;ll notice the &quot;base case&quot; mentioned is the first part of the quicksort method, and that
+is for when we&#39;ll call the method repeatedly later. All you need to know is that this &quot;base case&quot;
+comes first.
+
+After making the left and right groups (lesser and greater values than the pivot), we need a way to
+determine which values are lesser or greater, so we iterate through them with the &quot;for&quot; loop. You&#39;ll
+notice inside this loop there are unfamiliar symbols here; this is the ternary conditional (?) operator.
+All it means is that there&#39;s a condition, the question mark, the true outcome, and the false outcome, all
+in that order (condition ? true_action : false_action), with that syntax.
+
+It&#39;s equivalent to:
+
+if(condition)
+  true_action;
+else
+  false_action;
+
+The more you know. Next, we want to sort the left side (left = quickSort(left)), add the pivot
+(left.push_back(pivot)), sort the right side, and add the two sides.
+
+In c++, concatenation (adding multiple things together) of vectors is done with the insert() method,
+with the syntax first.insert(first.end(), second.begin(), second.end()), with first and second
+being vectors. So that&#39;s what is being done there.
+
+Then you return your sorted array.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>This is largely the same as the C++ operation, except with C#&#39;s &quot;List&quot; instead of C++&#39;s &quot;vector&quot;.
+For the number of items in the list, the &quot;count&quot; property is used (list.count). To add something to
+the list, &quot;list.Add(thing)&quot; is used. To add a list to another list, &quot;list.AddRange(secondList)&quot; is
+used.
+
+Notice that instead of directly using the left and right lists, quicksort is called again when
+adding the lists together, making sure they are sorted and saving lines that would be used to assign
+them to sorted versions.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Here, we&#39;re using the &quot;ArrayList&quot; class, because it&#39;s relatively easy to use, can be expanded, and can
+be converted to other data structures such as a &quot;linked list&quot; through the &quot;list&quot; interface. In other words,
+you should prefer to use ArrayLists in Java when you can.
+
+To use an arraylist, you can use the line &quot;import java.util.*;&quot;, getting the &quot;array&quot;, &quot;arraylist&quot;, and &quot;list&quot;
+dependencies all at the same time with the star (&quot;*&quot;) operator.
+
+Because generic type arguments (the list&lt;stuff&gt; parts) can&#39;t use primitive types (like int) in Java,
+wrapper types are used instead. Here, instead of &quot;int&quot;, the wrapper type is &quot;Integer&quot;, which automatically
+casts (converts itself) between the two when necessary, so it works just like an int.
+
+With ArrayList, items are accessed with the syntax &quot;list.get(index)&quot;, and can be set with the syntax
+&quot;list.set(index, value)&quot; . Because we are making a new list to return, only the &quot;get()&quot; method is needed.
+
+Adding items to the end of the list is done with the syntax list.add(item), and adding lists together is done
+with the syntax &quot;listOne.addAll(listTwo)&quot;.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>You&#39;ll notice this is simpler than the solutions of the verbose (more articulated) languages, and that&#39;s a good thing.
+The syntax should be self explanatory up until the last few lines of the sort.
+
+In the line &quot;array[i] &lt; pivot ? left.push(array[i]) : right.push(array[i]);&quot;, JavaScript&#39;s ternary operator
+has the common syntax &quot;condition ? true_action : false_action&quot; . This is equivalent to:
+
+if(condition)
+  true_action;
+else
+  false_action;
+
+So the line reads &quot;if the number is less than the pivot, put it in the left array,
+else put it in the right array&quot;.
+
+Next, when returning the array, the line &quot;return quickSort(left).concat(pivot, quickSort(right));&quot; is used
+to sort the left side and add the pivot and right arrays with the &quot;concat()&quot; method. The right array is also
+sorted in this line.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The syntax here should be self explanatory, for the most part. The range starts at one because the pivot is at index 0,
+and we want to compare everything else. There is a ternary operation here; the line
+&quot;left.append(arr[num]) if arr[num] &lt; pivot else right.append(arr[num])&quot; has the syntax
+&quot;true_action if condition else false_action&quot;, which is a little different than typical ternary
+operators.
+
+In the line returning the array, you&#39;ll notice the pivot is in square brackets (&quot;[ ]&quot;), and that&#39;s because
+the addition (&quot;+&quot;) operator takes two arrays, so it&#39;s being put in its own little array.
+
+You&#39;ll also notice that there are words instead of numbers, and they get sorted alphabetically.
+This is taking advantage of the fact that quicksort is a comparative sort, and strings can be compared
+in python.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Here, we are using a &quot;type alias&quot; (having a word that counts as many types) to make the function accept not only
+numbers, but any type that can be compared. The syntax for this is &quot;&lt;aliasName: type_describing_things&gt;&quot;,
+and it&#39;s put right next to &quot;func&quot; to give that information to the function (the alias can be used in the parameters
+as well as the body of the function itself when placed there).
+
+Swift has what is known as &quot;protocols&quot; which define properties or requirements for different things. Here,
+we are using the &quot;Comparable&quot; protocol, requiring whatever type the alias is to be comparable (functional with less than,
+greater than, and similar operators). This is better than Javascript and Python because it will tell you if you are
+passing types that can&#39;t be compared before compiling, whereas other languages would just give you a runtime error.
+
+In the first line, instead of having a statement like &quot;if (!condition)&quot;, we can have a &quot;guard&quot; statement with the syntax
+&quot;guard condition else{false_action}&quot; , which is neater than usual.
+
+There is the ternary operator here (&quot;?&quot;), with the syntax &quot;condition ? true_action : false_action&quot;, equivalent to
+
+if condition{
+  true_action
+}else{
+  false_action
+}
+
+The pivot is placed in square brackets (&quot;[ ]&quot;) to behave like an array when adding the left, pivot, and right together.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQgQWx0Lg== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>See the other Swift tab for other syntax details.
+
+This implementation can also be done with swift using the &quot;filter&quot; method of the array class.
+&quot;filter&quot; has the syntax &quot;array.filter {some_condition_with_$0}&quot;, where $0 is any given item.
+It returns the array where the condition is true for all the items. So &quot;$0 &lt; pivot&quot; returns the array
+that has all the items less than the pivot. Similar conditions are used for the other arrays.
+
+Obviously, the &quot;equal&quot; array doesn&#39;t need to be sorted because all the items are equivalent.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../math/index.html" class="btn btn-neutral float-right" title="Math" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="bubbleSort.html" class="btn btn-neutral" title="Bubble Sort" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Michael Riad Zaky.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

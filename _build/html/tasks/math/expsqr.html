@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Exponentiation by Squaring &mdash; Fordham Snippets  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Fordham Snippets  documentation" href="../../index.html"/>
+        <link rel="up" title="Math" href="index.html"/>
+        <link rel="prev" title="Math" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Fordham Snippets
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tasks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../beginner/index.html">Beginner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/Hello World.html">Hello World</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../sorting/index.html">Tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../sorting/bubbleSort.html">Bubble Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Math</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Exponentiation by Squaring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Fordham Snippets</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tasks</a> &raquo;</li>
+        
+          <li><a href="index.html">Math</a> &raquo;</li>
+        
+      <li>Exponentiation by Squaring</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="exponentiation-by-squaring">
+<h1>Exponentiation by Squaring<a class="headerlink" href="#exponentiation-by-squaring" title="Permalink to this headline">¶</a></h1>
+<p>“Exponentiation by squaring” is a fancy way of saying “fast power operations”.
+For example, for 2^10, two would need to be multiplied ten times.
+With this algorithm, 2^10 turns into (2*2)^5, which turns into 4(4*4)^2,
+then 4(16*16), giving our answer of 1024 in only four multiplications.
+As the power gets larger, it becomes clearer why this method is faster,
+given that multiplication is more computationaly expensive than other
+operations.</p>
+<p>The logic goes, for a number and a power:</p>
+<ul class="simple">
+<li><p>If the power is less than zero, return one over the number and make the power negative.</p></li>
+<li><p>If the power is zero, return the number one.</p></li>
+<li><p>Return the number if the power is one.</p></li>
+<li><p>If the number is even, square the number and half the power.</p></li>
+<li><p>If the number is odd, multiply by the number, subtract one from the power, and do the even operation.</p></li>
+<li><p>Repeat until the power is one.</p></li>
+</ul>
+<p>You don’t need to memorize this, of course, but it’s simple enough for practice.</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="kt">long</span> <span class="kt">long</span> <span class="nf">powers</span><span class="p">(</span><span class="kt">long</span> <span class="kt">long</span> <span class="n">num</span><span class="p">,</span> <span class="kt">long</span> <span class="kt">long</span> <span class="n">pow</span><span class="p">){</span>
+    <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">num</span> <span class="o">&lt;&lt;</span> <span class="s">&quot; , &quot;</span> <span class="o">&lt;&lt;</span> <span class="n">pow</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">powers</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">num</span><span class="p">,</span> <span class="o">-</span><span class="n">pow</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="o">==</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">powers</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="n">pow</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">num</span> <span class="o">*</span> <span class="n">powers</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="p">(</span><span class="n">pow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+ <span class="p">{</span>
+    <span class="k">static</span> <span class="kt">long</span> <span class="nf">powers</span><span class="p">(</span><span class="kt">long</span> <span class="n">num</span><span class="p">,</span> <span class="kt">long</span> <span class="n">pow</span><span class="p">){</span>
+    <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">num</span> <span class="p">+</span> <span class="s">&quot; , &quot;</span> <span class="p">+</span> <span class="n">pow</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="p">&lt;</span> <span class="m">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nf">powers</span><span class="p">(</span><span class="m">1</span> <span class="p">/</span> <span class="n">num</span><span class="p">,</span> <span class="p">-</span><span class="n">pow</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="p">==</span> <span class="m">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="m">1</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="p">==</span> <span class="m">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="n">num</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">pow</span> <span class="p">%</span> <span class="m">2</span> <span class="p">==</span> <span class="m">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nf">powers</span><span class="p">(</span><span class="n">num</span> <span class="p">*</span> <span class="n">num</span><span class="p">,</span> <span class="n">pow</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">num</span> <span class="p">*</span> <span class="n">powers</span><span class="p">(</span><span class="n">num</span> <span class="p">*</span> <span class="n">num</span><span class="p">,</span> <span class="p">(</span><span class="n">pow</span> <span class="p">-</span> <span class="m">1</span><span class="p">)</span> <span class="p">/</span> <span class="m">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+     <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="n">powers</span><span class="p">(</span><span class="m">4</span><span class="p">,</span> <span class="m">25</span><span class="p">));</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">powersRecursive</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">long</span> <span class="nf">powers</span><span class="o">(</span><span class="kt">long</span> <span class="n">num</span><span class="o">,</span> <span class="kt">long</span> <span class="n">pow</span><span class="o">){</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">num</span> <span class="o">+</span> <span class="s">&quot; , &quot;</span> <span class="o">+</span> <span class="n">pow</span><span class="o">);</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">pow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="k">return</span> <span class="n">powers</span><span class="o">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">num</span><span class="o">,</span> <span class="o">-</span><span class="n">pow</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">pow</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">pow</span> <span class="o">==</span> <span class="mi">1</span><span class="o">){</span>
+            <span class="k">return</span> <span class="n">num</span><span class="o">;</span>
+        <span class="o">}</span><span class="k">else</span> <span class="k">if</span><span class="o">(</span><span class="n">pow</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+            <span class="k">return</span> <span class="n">powers</span><span class="o">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="o">,</span> <span class="n">pow</span> <span class="o">/</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+            <span class="k">return</span> <span class="n">num</span> <span class="o">*</span> <span class="n">powers</span><span class="o">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="o">,</span> <span class="o">(</span><span class="n">pow</span> <span class="o">-</span> <span class="mi">1</span><span class="o">)</span> <span class="o">/</span> <span class="mi">2</span><span class="o">);</span>
+        <span class="o">}</span>
+      <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">powers</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="mi">25</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">powers</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">pow</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">num</span><span class="p">,</span> <span class="nx">pow</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="nx">pow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">powers</span><span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="nx">num</span><span class="p">,</span> <span class="o">-</span><span class="nx">pow</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">pow</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">pow</span> <span class="o">===</span> <span class="mi">1</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">num</span><span class="p">;</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">pow</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">===</span> <span class="mi">0</span><span class="p">){</span>
+        <span class="k">return</span> <span class="nx">powers</span><span class="p">(</span><span class="nx">num</span> <span class="o">*</span> <span class="nx">num</span><span class="p">,</span> <span class="nx">pow</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="nx">num</span> <span class="o">*</span> <span class="nx">powers</span><span class="p">(</span><span class="nx">num</span> <span class="o">*</span> <span class="nx">num</span><span class="p">,</span> <span class="p">(</span><span class="nx">pow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">power</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="nb">pow</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="nb">pow</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">pow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">power</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">num</span><span class="p">,</span> <span class="o">-</span><span class="nb">pow</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">pow</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="nb">pow</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">num</span>
+    <span class="k">elif</span> <span class="nb">pow</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">power</span><span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">num</span><span class="p">,</span> <span class="nb">pow</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">num</span><span class="o">*</span><span class="n">power</span><span class="p">(</span><span class="n">num</span><span class="o">*</span><span class="n">num</span><span class="p">,</span> <span class="p">(</span><span class="nb">pow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">power</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">powers</span><span class="p">(</span><span class="kc">_</span> <span class="n">num</span><span class="p">:</span> <span class="nb">Int</span><span class="p">,</span><span class="kc">_</span> <span class="n">pow</span><span class="p">:</span> <span class="nb">Int</span><span class="p">)</span> <span class="p">-&gt;</span> <span class="nb">Int</span> <span class="p">{</span>
+    <span class="bp">print</span><span class="p">(</span><span class="n">num</span><span class="p">,</span> <span class="n">pow</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">pow</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">powers</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">num</span><span class="p">,</span> <span class="o">-</span><span class="n">pow</span><span class="p">)</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">pow</span> <span class="p">==</span> <span class="mi">0</span><span class="p">{</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">pow</span> <span class="p">==</span> <span class="mi">1</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">num</span>
+    <span class="p">}</span><span class="k">else</span> <span class="k">if</span> <span class="n">pow</span> <span class="o">%</span> <span class="mi">2</span> <span class="p">==</span> <span class="mi">0</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">powers</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="n">pow</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span><span class="k">else</span><span class="p">{</span>
+        <span class="k">return</span> <span class="n">num</span> <span class="o">*</span> <span class="n">powers</span><span class="p">(</span><span class="n">num</span> <span class="o">*</span> <span class="n">num</span><span class="p">,</span> <span class="p">(</span><span class="n">pow</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">powers</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;long long&quot; here is a number type, just like &quot;int&quot;, but it can store larger numbers.
+The expression &quot;pow % 2 == 0&quot; means there is no remainder when divided by two repeatedly,
+or the number is even.
+
+The only case left, of course, is that the number is odd, since the cases
+negative, zero, one, and even are accounted for.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>In C#, the &quot;long&quot; type is like the C++ &quot;long long&quot; type, a 64 bit integer.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;long&quot; here is a 64 bit integer, nothing else here of note.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Because javascript is loosely typed (no types such as &quot;int&quot; are specified), be careful not
+to pass in a decimal number because this relies on equality comparisons, which those types can&#39;t do.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>In python, &quot;elif&quot; is used instead of the typical &quot;else if&quot;, because python would have you indent twice
+with that, and it would take another line.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The underscore beside the parameter names make them unrequired when calling the function instead of the
+default required with swift.
+
+(powers(4,25) can be called instead of powers(num: 4, pow:25) which is standard in swift).
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Math" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Michael Riad Zaky.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

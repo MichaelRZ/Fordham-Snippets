@@ -1,0 +1,541 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Bubble Sort &mdash; Fordham Snippets  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/segment.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/menu.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/sphinx_tabs/tabs.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../_static/my_theme.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Fordham Snippets  documentation" href="../../index.html"/>
+        <link rel="up" title="Sorting" href="index.html"/>
+        <link rel="next" title="Math" href="../math/index.html"/>
+        <link rel="prev" title="Sorting" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Fordham Snippets
+          
+
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Tasks</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../beginner/index.html">Beginner</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../beginner/Hello World.html">Hello World</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Sorting</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Bubble Sort</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../math/index.html">Math</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../math/expsqr.html">Exponentiation by Squaring</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Fordham Snippets</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Tasks</a> &raquo;</li>
+        
+          <li><a href="index.html">Sorting</a> &raquo;</li>
+        
+      <li>Bubble Sort</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="bubble-sort">
+<h1>Bubble Sort<a class="headerlink" href="#bubble-sort" title="Permalink to this headline">¶</a></h1>
+<p>Sorting is an important topic in computer science, and will inevitably come up at some point while you are programming.
+Because of that, you should know the most common methods, starting with “Bubble sort”.</p>
+<p>“Bubble sort” is a bad sorting algorithm. However, you should know this before skipping to
+the “Quick sort” section, because this one is easier to understand.</p>
+<p>Imagine you had a hand of cards. You go through the cards, from left to right, and swap cards next to each other
+whenever the left one is larger. You keep doing this until the cards are sorted. That’s bubble sort.</p>
+<p>Don’t get it yet? <a class="reference external" href="https://www.youtube.com/watch?v=lyZQPjUT5B4">Here’s some interpretive dance.</a></p>
+<p>It’s a bad sorting algorithm because it’s slow next to everything else, but wasn’t that easy to understand?
+Here it is in practice:</p>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-c++ notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;iostream&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;vector&gt;</span><span class="cp"></span>
+<span class="k">using</span> <span class="k">namespace</span> <span class="n">std</span><span class="p">;</span>
+
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+<span class="kt">bool</span> <span class="n">sorted</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+<span class="k">do</span><span class="p">{</span>
+ <span class="n">sorted</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+ <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">size</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">){</span>
+     <span class="k">if</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+         <span class="n">sorted</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+         <span class="kt">int</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span><span class="p">;</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">sorted</span><span class="p">);</span>
+<span class="k">return</span> <span class="n">array</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kt">int</span> <span class="n">main</span><span class="p">(){</span>
+<span class="n">vector</span><span class="o">&lt;</span><span class="kt">int</span><span class="o">&gt;</span> <span class="n">vect</span><span class="p">{</span><span class="mi">54</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">134</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">98</span><span class="p">,</span> <span class="mi">1531</span><span class="p">,</span> <span class="mi">32</span><span class="p">};</span>  <span class="c1">//c++ 11</span>
+<span class="n">vect</span> <span class="o">=</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">vect</span><span class="p">);</span>
+<span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">vect</span><span class="p">.</span><span class="n">size</span><span class="p">();</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+ <span class="n">cout</span> <span class="o">&lt;&lt;</span> <span class="n">vect</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="n">endl</span><span class="p">;</span>
+<span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-c# notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">System.Collections.Generic</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">Program</span>
+ <span class="p">{</span>
+    <span class="k">static</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="n">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">bool</span> <span class="n">sorted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+    <span class="k">do</span><span class="p">{</span>
+        <span class="n">sorted</span> <span class="p">=</span> <span class="k">true</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="p">=</span> <span class="m">0</span><span class="p">;</span> <span class="n">i</span> <span class="p">&lt;</span> <span class="n">array</span><span class="p">.</span><span class="n">Count</span><span class="p">-</span><span class="m">1</span><span class="p">;</span> <span class="n">i</span><span class="p">++){</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]&gt;</span><span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">+</span><span class="m">1</span><span class="p">]){</span>
+                <span class="n">sorted</span> <span class="p">=</span> <span class="k">false</span><span class="p">;</span>
+                <span class="kt">int</span> <span class="n">temp</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">+</span><span class="m">1</span><span class="p">];</span>
+                <span class="n">array</span><span class="p">[</span><span class="n">i</span><span class="p">+</span><span class="m">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">while</span><span class="p">(!</span><span class="n">sorted</span><span class="p">);</span>
+    <span class="k">return</span> <span class="n">array</span><span class="p">;</span>
+<span class="p">}</span>
+     <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+     <span class="p">{</span>
+         <span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">&quot;Hello world!&quot;</span><span class="p">);</span>
+         <span class="kt">var</span> <span class="n">list</span> <span class="p">=</span> <span class="k">new</span> <span class="n">List</span><span class="p">&lt;</span><span class="kt">int</span><span class="p">&gt;</span> <span class="p">{</span><span class="m">54</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">134</span><span class="p">,</span> <span class="m">5</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">98</span><span class="p">,</span> <span class="m">1531</span><span class="p">,</span> <span class="m">32</span><span class="p">};</span>
+         <span class="n">list</span> <span class="p">=</span> <span class="n">bubbleSort</span><span class="p">(</span><span class="n">list</span><span class="p">);</span>
+         <span class="n">list</span><span class="p">.</span><span class="n">ForEach</span><span class="p">(</span><span class="n">System</span><span class="p">.</span><span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">);</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">java.util.Arrays</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">bubbleSorting</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">bubbleSort</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">array</span><span class="o">){</span>
+        <span class="n">var</span> <span class="n">sorted</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="k">do</span><span class="o">{</span>
+            <span class="n">sorted</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="k">for</span><span class="o">(</span><span class="n">var</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">array</span><span class="o">.</span><span class="na">length</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">++){</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]&gt;</span><span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]){</span>
+                    <span class="n">sorted</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="n">var</span> <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+                    <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">];</span>
+                    <span class="n">array</span><span class="o">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">temp</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span><span class="k">while</span><span class="o">(!</span><span class="n">sorted</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">array</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">var</span> <span class="n">numbers</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[]</span> <span class="o">{</span><span class="mi">54</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">134</span><span class="o">,</span> <span class="mi">5</span><span class="o">,</span> <span class="mi">1</span><span class="o">,</span> <span class="mi">98</span><span class="o">,</span> <span class="mi">1531</span><span class="o">,</span> <span class="mi">32</span><span class="o">};</span>
+        <span class="n">numbers</span> <span class="o">=</span> <span class="n">bubbleSort</span><span class="o">(</span><span class="n">numbers</span><span class="o">);</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">Arrays</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">numbers</span><span class="o">));</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">function</span> <span class="nx">bubbleSort</span><span class="p">(</span><span class="nx">array</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">var</span> <span class="nx">sorted</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="k">do</span><span class="p">{</span>
+        <span class="nx">sorted</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">array</span><span class="p">.</span><span class="nx">length</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">){</span>
+            <span class="k">if</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span><span class="o">&gt;</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]){</span>
+                <span class="nx">sorted</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+                <span class="kd">var</span> <span class="nx">temp</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">];</span>
+                <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+                <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="nx">temp</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span><span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="nx">sorted</span><span class="p">);</span>
+  <span class="k">return</span> <span class="nx">array</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="kd">var</span> <span class="nx">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5643</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">92</span><span class="p">];</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">bubbleSort</span><span class="p">(</span><span class="nx">numbers</span><span class="p">));</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="n">array</span><span class="p">):</span>
+<span class="nb">sorted</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="k">while</span> <span class="ow">not</span> <span class="nb">sorted</span><span class="p">:</span>
+ <span class="nb">sorted</span> <span class="o">=</span> <span class="bp">True</span>
+ <span class="k">for</span> <span class="n">index</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">array</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+     <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]:</span>
+         <span class="nb">sorted</span> <span class="o">=</span> <span class="bp">False</span>
+         <span class="n">temp</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">temp</span>
+<span class="k">return</span> <span class="n">array</span>
+
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.8</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">345</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">5643</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">123</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">234</span><span class="p">,</span> <span class="mi">92</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">19232</span><span class="p">,</span> <span class="mi">193</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1311</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="k">print</span><span class="p">(</span><span class="n">nums</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">bubbleSort</span><span class="p">(</span><span class="n">nums</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">func</span> <span class="nf">bubbleSort</span><span class="p">(</span><span class="kc">_</span> <span class="n">input</span><span class="p">:</span> <span class="p">[</span><span class="nb">Int</span><span class="p">])</span> <span class="p">-&gt;</span> <span class="p">[</span><span class="nb">Int</span><span class="p">]</span> <span class="p">{</span>
+<span class="kd">var</span> <span class="nv">array</span> <span class="p">=</span> <span class="n">input</span>
+<span class="kd">var</span> <span class="nv">sorted</span> <span class="p">=</span> <span class="kc">false</span>
+<span class="k">while</span> <span class="o">!</span><span class="bp">sorted</span><span class="p">{</span>
+ <span class="bp">sorted</span> <span class="p">=</span> <span class="kc">true</span>
+ <span class="k">for</span> <span class="n">index</span> <span class="k">in</span> <span class="mf">0.</span><span class="p">.&lt;</span><span class="n">array</span><span class="p">.</span><span class="bp">count</span><span class="o">-</span><span class="mi">1</span><span class="p">{</span>
+     <span class="k">if</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]{</span>
+         <span class="bp">sorted</span> <span class="p">=</span> <span class="kc">false</span>
+         <span class="kd">let</span> <span class="nv">temp</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="p">=</span> <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+         <span class="n">array</span><span class="p">[</span><span class="n">index</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="p">=</span> <span class="n">temp</span>
+     <span class="p">}</span>
+ <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">return</span> <span class="n">array</span>
+<span class="p">}</span>
+<span class="bp">print</span><span class="p">(</span><span class="n">bubbleSort</span><span class="p">([</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">9012</span><span class="p">,</span><span class="mi">142</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">66</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="sphinx-tabs docutils container">
+<div class="ui top attached tabular menu sphinx-menu docutils container">
+<div class="active item sphinx-data-tab-Qysr docutils container">
+<div class="docutils container">
+<p>C++</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-QyM= docutils container">
+<div class="docutils container">
+<p>C#</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YQ== docutils container">
+<div class="docutils container">
+<p>Java</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="docutils container">
+<p>JavaScript</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-UHl0aG9u docutils container">
+<div class="docutils container">
+<p>Python</p>
+</div>
+</div>
+<div class="item sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="docutils container">
+<p>Swift</p>
+</div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-Qysr active docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The first thing you might notice is the weird &quot;vector&quot; language with the angle brackets (&lt;likethis&gt;).
+That&#39;s because, in C++, you should almost always prefer vectors over normal arrays. After declaring a vector,
+with vector&lt;type&gt;, they function the same way as arrays, but you can get the size with .size(), and they
+can be resized. Make sure to have the line &quot;#include &lt;vector&gt;&quot; at the top of the file.
+
+There is one line marked as C++ 11 here, so add &quot;-std=c++11&quot; after &quot;g++&quot; when compiling if it doesn&#39;t work.
+
+If you&#39;re stuck with an older version of C++, vectors can also be initialized like this:
+
+int arr[] = { 10, 20, 30 };
+int n = sizeof(arr) / sizeof(arr[0]);
+vector&lt;int&gt; vect(arr, arr + n);
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-QyM= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Here, we are using a &quot;List&quot;, the more useful version of an array in C#.
+Make sure to add &quot;using System.Collections.Generic;&quot; to the top of the file to use lists.
+
+The syntax for lists is similar to C++&#39;s &quot;vector&quot;.
+
+The only line which may be confusing here is &quot;list.ForEach(System.Console.WriteLine);&quot;
+Here, lists have a property called &quot;ForEach&quot;, so for each item in the list it prints it to the console.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YQ== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>To use arrays in Java, have &quot;import java.util.Arrays;&quot; at the top of the file.
+To print the array, in the Arrays section of java, there&#39;s the syntax &quot;Arrays.toString(array)&quot;,
+which turns the array into a string that can be given to the console.
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-SmF2YVNjcmlwdA== docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Here, being a loosely typed language can help because the algorithm is only comparing values.
+In fact, if you gave it a list of words, it should come back alphabetized.
+
+(You may be shocked to learn letters are in fact numbers, in computers at least. See an &quot;ascii table&quot;.)
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-UHl0aG9u docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&quot;not&quot; is used instead of the typical &quot;!&quot; operator.
+The &quot;range&quot; function here is used to match Python&#39;s &quot;for ... in ...&quot; syntax.
+The numbers in the statement are included, and the variable after &quot;for&quot; iterates through these numbers.
+
+Here, being a loosely typed language can help because the algorithm is only comparing values.
+In fact, if you gave it a list of words, it should come back alphabetized.
+
+(You may be shocked to learn letters are in fact numbers, in computers at least. See an &quot;ascii table&quot;.)
+</pre></div>
+</div>
+</div>
+<div class="ui bottom attached sphinx-tab tab segment code-tab sphinx-data-tab-U3dpZnQ= docutils container">
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>The underscore before the parameter gets rid of the variable name when calling the function.
+Swift has the syntax [type] when describing an array.
+
+The statement &quot;for index in 0..&lt;array.count-1&quot; can be read as &quot;for each number from zero to one before this number&quot;.
+typically &quot;...&quot; would be used to state a range, but &quot;..&lt;&quot; can be used to stop short of the second number, instead of including it.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../math/index.html" class="btn btn-neutral float-right" title="Math" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Sorting" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Michael Riad Zaky.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> and ❤️  using a custom <a href="https://github.com/LinxiFan/Sphinx-theme">theme</a> based on <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/language_data.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/semantic-ui-2.4.1/tab.min.js"></script>
+      <script type="text/javascript" src="../../_static/sphinx_tabs/tabs.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+.. Fordham Snippets documentation master file, created by
+   sphinx-quickstart on Fri Jul  5 19:20:09 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Hello World
+===========
+Output "Hello world!" to the console.
+
+"Hello World" is a sanity check to make sure you haven't bricked your machine.
+
+.. tabs::
+
+   .. code-tab:: c++ C++
+
+          #include <iostream>
+          using namespace std;
+
+          int main(){
+               cout<<"Hello world!"<< endl;
+               return 0;
+          }
+
+   .. code-tab:: c# C#
+
+          class Program
+          {
+              static void Main(string[] args)
+              {
+                  System.Console.WriteLine("Hello world!");
+              }
+          }
+
+   .. code-tab:: java Java
+
+          public class hello {
+               public static void main(String[] args) {
+                    System.out.println("Hello world!");
+               }
+          }
+
+   .. code-tab:: javascript JavaScript
+
+          console.log("Hello world!")
+
+   .. code-tab:: python Python
+
+          print("Hello world!")
+
+   .. code-tab:: swift Swift
+
+          print("Hello world!")
+
+Notes
+`````
+
+.. tabs::
+
+   .. code-tab:: text C++
+
+          You should have seen this in class.
+
+   .. code-tab:: text C#
+
+          Thankfully, they included outputs in C#.
+
+   .. code-tab:: text Java
+
+          Similar to the C# implementation.
+
+   .. code-tab:: text JavaScript
+
+          Short and sweet.
+
+   .. code-tab:: text Python
+
+          Already you can tell Python is going to take the least amount of effort.
+
+   .. code-tab:: text Swift
+
+          Swift's implementation is also short.
